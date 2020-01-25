@@ -12,5 +12,9 @@ module.exports = function(app) {
             res.json(err);
         });
     });
+
+    app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
+        res.json(`/members`);
+    });
 };
 

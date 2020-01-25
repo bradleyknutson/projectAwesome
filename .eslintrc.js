@@ -44,6 +44,7 @@ module.exports = {
         'no-empty-function': 'error',
         'no-multi-spaces': 'error',
         'no-unused-vars': 'error',
-        'camelcase': 'error',
+		'camelcase': 'error',
+		'no-console': 'off'
 	}
 };
