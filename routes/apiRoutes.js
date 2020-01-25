@@ -1,7 +1,7 @@
 var db = require(`../models`);
 const passport = require(`../config/passport`);
 const bodyParser = require(`body-parser`);
-
+const upload = require(`../config/middleware/multer`);
 
 
 module.exports = function (app) {
@@ -22,8 +22,8 @@ module.exports = function (app) {
 
     // add profile picture
     app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: true }));
-    app.post(`/profile/image`, (req, res) => {
-        res.send(req.body);
+    app.post(`/profile/image`, upload.single(`image`), (req, res) => {
+        res.send(req.file);
     });
 };
 
