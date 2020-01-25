@@ -4,11 +4,11 @@
   "description": "Project 2 Starter",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js && cross-env NODE_ENV=production",
     "lint": "eslint .",
     "fix": "eslint --fix .",
     "test": "npm run lint && cross-env NODE_ENV=test",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js && cross-env NODE_ENV=development"
   },
   "license": "ISC",
   "dependencies": {
