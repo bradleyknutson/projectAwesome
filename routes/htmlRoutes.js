@@ -8,8 +8,16 @@ module.exports = function(app) {
 
     app.get(`/profile`, (req, res) => {
         db.User.findAll({}).then((err, result) => {
-            res.render(`userProfile`, {user: result});
+            res.render(`profile`, {user: result});
         });
+    });
+
+    app.get(`/:animal`, (req, res) => {
+        res.render(`animals`);
+    });
+
+    app.get(`/small_animals`, (req, res) => {
+        res.render(`animals`);
     });
 
     // Render 404 page for any unmatched routes
