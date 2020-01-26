@@ -2,3 +2,4 @@ models/index.js
 node_modules
 config.js
 test
+config/cloudinary.js

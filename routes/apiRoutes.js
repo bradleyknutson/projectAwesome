@@ -2,6 +2,8 @@ var db = require(`../models`);
 const passport = require(`../config/passport`);
 const bodyParser = require(`body-parser`);
 const upload = require(`../config/middleware/multer`);
+const cloudinary = require(`cloudinary`);
+require(`../config/cloudinary`);
 
 
 module.exports = function (app) {
@@ -20,10 +22,13 @@ module.exports = function (app) {
         res.json(`/members`);
     });
 
-    // add profile picture
+    // add profile picture and profile name
     app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: true }));
-    app.post(`/profile/image`, upload.single(`image`), (req, res) => {
-        res.send(req.file);
+  
+    app.post(`/profile/image`, upload.single(`image`), async (req, res) => {
+        const result = await cloudinary.v2.uploader.upload(req.file.path);
+        res.send(result);
     });
+    
 };
 
