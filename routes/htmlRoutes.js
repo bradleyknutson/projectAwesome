@@ -1,4 +1,6 @@
 const db = require(`../models`);
+const petfinder = require(`@petfinder/petfinder-js`);
+const client = new petfinder.Client({apiKey: process.env.PETFINDER_API, secret: process.env.PETFINDER_SECRET});
 
 module.exports = function(app) {
     // Load index page
@@ -7,13 +9,32 @@ module.exports = function(app) {
     });
 
     app.get(`/profile`, (req, res) => {
-        db.User.findAll({}).then((err, result) => {
+        db.User.findOne({}).then((err, result) => {
             res.render(`profile`, {user: result});
         });
     });
 
-    app.get(`/:animal`, (req, res) => {
-        res.render(`animals`);
+    app.get(`/animals/:animal?`, (req, res, next) => {
+        if(req.params.animal){
+            let animalSearch = req.params.animal.toLowerCase().replace(/^\w/, c=> c.toUpperCase());
+            client.animal.search(
+                {
+                    type: animalSearch
+                }).then(response => {
+                res.render(`animalSearch`, {animal: response.data.animals});
+            }).catch(err => {
+                // res.render(`404`);
+                next(err);
+            });
+        }else{
+            client.animal.search()
+                .then(response => {
+                    res.render(`animalSearch`, {animal: response.data.animals});
+                }).catch(err => {
+                    console.log(err.request, err.response);
+                    next(err);
+                });
+        }
     });
 
     app.get(`/small_animals`, (req, res) => {
