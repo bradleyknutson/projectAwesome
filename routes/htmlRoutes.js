@@ -19,15 +19,23 @@ module.exports = function(app) {
             let animalSearch = req.params.animal.toLowerCase().replace(/^\w/, c=> c.toUpperCase());
             client.animal.search(
                 {
-                    type: animalSearch
-                }).then(response => {
-                res.render(`animalSearch`, {animal: response.data.animals});
-            }).catch(err => {
-                // res.render(`404`);
-                next(err);
-            });
+                    type: animalSearch,
+                    sort: `recent`,
+                    limit: 30,
+                    status: `adoptable`
+                })
+                .then(response => {
+                    res.render(`animalSearch`, {animal: response.data.animals});
+                }).catch(err => {
+                    // res.render(`404`);
+                    next(err);
+                });
         }else{
-            client.animal.search()
+            client.animal.search({
+                sort: `recent`,
+                limit: 30,
+                status: `adoptable`
+            })
                 .then(response => {
                     res.render(`animalSearch`, {animal: response.data.animals});
                 }).catch(err => {
