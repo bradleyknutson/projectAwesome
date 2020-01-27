@@ -8,6 +8,10 @@ module.exports = function(app) {
         res.render(`index`);
     });
 
+    app.get(`/login`, (req, res) => {
+        res.render(`login`);
+    });
+
     app.get(`/profile`, (req, res) => {
         db.User.findOne({}).then((err, result) => {
             res.render(`profile`, {user: result});
