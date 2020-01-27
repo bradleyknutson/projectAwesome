@@ -18,8 +18,12 @@ module.exports = function (app) {
         });
     });
 
-    app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
-        res.json(`/members`);
+    app.post(`/login`, passport.authenticate(`local`, {
+        successRedirect: `/`,
+        failureRedirect: `/login`,
+        failureFlash: true
+    }), (req, res) => {
+        
     });
 
     // add profile picture and profile name

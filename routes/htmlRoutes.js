@@ -1,6 +1,7 @@
 const db = require(`../models`);
 const petfinder = require(`@petfinder/petfinder-js`);
 const client = new petfinder.Client({apiKey: process.env.PETFINDER_API, secret: process.env.PETFINDER_SECRET});
+const isAuthenticated = require(`../config/middleware/isAuthenticated`);
 
 module.exports = function(app) {
     // Load index page
@@ -9,12 +10,15 @@ module.exports = function(app) {
     });
 
     app.get(`/login`, (req, res) => {
+        if(req.user){
+            res.redirect(`/`);
+        }
         res.render(`login`);
     });
 
     app.get(`/profile`, (req, res) => {
         db.User.findOne({}).then((err, result) => {
-            res.render(`profile`, {user: result});
+            res.render(`profile`, {user: result,});
         });
     });
 
