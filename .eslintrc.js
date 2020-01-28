@@ -43,7 +43,6 @@ module.exports = {
         'eqeqeq': 'error',
         'no-empty-function': 'error',
         'no-multi-spaces': 'error',
-        'no-unused-vars': 'error',
 		'camelcase': 'error',
 		'no-console': 'off'
 	}

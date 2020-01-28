@@ -8,7 +8,7 @@ module.exports = function(app) {
     app.get(`/`, function(req, res) {
         res.render(`index`,
             {
-                user: req.user
+                user: req.user || false
             });
     });
 
@@ -16,12 +16,20 @@ module.exports = function(app) {
         if(req.user){
             res.redirect(`/`);
         }
-        res.render(`login`);
+        console.log(req.flash(`error`));
+        res.render(`login`, {error: req.flash(`error`)});
+    });
+
+    app.get(`/signup`, (req, res) => {
+        if(req.user){
+            res.redirect(`/`);
+        }
+        res.render(`signup`);
     });
 
     app.get(`/profile`, isAuthenticated, (req, res) => {
-        res.render(`/profile`, {
-            user: req.user
+        res.render(`profile`, {
+            user: req.user || false
         });
     });
 
@@ -38,7 +46,7 @@ module.exports = function(app) {
                 .then(response => {
                     res.render(`animalSearch`, {
                         animal: response.data.animals,
-                        user: req.user
+                        user: req.user || false
                     });
                 }).catch(err => {
                     // res.render(`404`);
@@ -54,7 +62,7 @@ module.exports = function(app) {
                     res.render(`animalSearch`, 
                         {
                             animal: response.data.animals,
-                            user: req.user
+                            user: req.user || false
                         });
                 }).catch(err => {
                     console.log(err.request, err.response);

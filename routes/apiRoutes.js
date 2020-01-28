@@ -12,16 +12,22 @@ module.exports = function (app) {
             email: req.body.email,
             password: req.body.password
         }).then(() => {
-            res.json(200).end();
+            res.redirect(307, `/api/login`);
         }).catch((err) => {
-            res.json(err);
+            console.log(err);
+            res.status(422).json(err.errors[0].message);
         });
     });
 
-    app.post(`/login`, passport.authenticate(`local`, {
+    app.post(`/api/login`, passport.authenticate(`local`, {
         failureRedirect: `/login`,
-        failureFlash: `Invalid username or password`
+        failureFlash: `true`
     }), (req, res) => {
+        res.json(`/`);
+    });
+
+    app.get(`/logout`, (req, res) => {
+        req.logout();
         res.redirect(`/`);
     });
 
