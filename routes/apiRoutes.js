@@ -18,8 +18,11 @@ module.exports = function (app) {
         });
     });
 
-    app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
-        res.json(`/members`);
+    app.post(`/login`, passport.authenticate(`local`, {
+        failureRedirect: `/login`,
+        failureFlash: `Invalid username or password`
+    }), (req, res) => {
+        res.redirect(`/`);
     });
 
     // add profile picture and profile name
@@ -27,7 +30,14 @@ module.exports = function (app) {
   
     app.post(`/profile/image`, upload.single(`image`), async (req, res) => {
         const result = await cloudinary.v2.uploader.upload(req.file.path);
-        res.send(result);
+        db.User.update({
+            profileImg: result.secure_url
+        },
+        {
+            where: {
+                email: req.user.email
+            }
+        });
     });
     
 };
