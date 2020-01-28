@@ -20,7 +20,7 @@
         <a class="nav-link" href="/small_animals">Small Animals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Sign In</a>
+        <a class="nav-link" href="#">{{#with user}}{{#if email}}Sign Out{{else}}Sign In{{/if}}{{/with}}</a>
       </li>
     </ul>
   </div>

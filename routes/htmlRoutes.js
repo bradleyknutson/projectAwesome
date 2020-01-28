@@ -6,7 +6,10 @@ const isAuthenticated = require(`../config/middleware/isAuthenticated`);
 module.exports = function(app) {
     // Load index page
     app.get(`/`, function(req, res) {
-        res.render(`index`);
+        res.render(`index`,
+            {
+                user: req.user
+            });
     });
 
     app.get(`/login`, (req, res) => {
@@ -16,9 +19,9 @@ module.exports = function(app) {
         res.render(`login`);
     });
 
-    app.get(`/profile`, (req, res) => {
-        db.User.findOne({}).then((err, result) => {
-            res.render(`profile`, {user: result,});
+    app.get(`/profile`, isAuthenticated, (req, res) => {
+        res.render(`/profile`, {
+            user: req.user
         });
     });
 
@@ -33,7 +36,10 @@ module.exports = function(app) {
                     status: `adoptable`
                 })
                 .then(response => {
-                    res.render(`animalSearch`, {animal: response.data.animals});
+                    res.render(`animalSearch`, {
+                        animal: response.data.animals,
+                        user: req.user
+                    });
                 }).catch(err => {
                     // res.render(`404`);
                     next(err);
@@ -45,16 +51,16 @@ module.exports = function(app) {
                 status: `adoptable`
             })
                 .then(response => {
-                    res.render(`animalSearch`, {animal: response.data.animals});
+                    res.render(`animalSearch`, 
+                        {
+                            animal: response.data.animals,
+                            user: req.user
+                        });
                 }).catch(err => {
                     console.log(err.request, err.response);
                     next(err);
                 });
         }
-    });
-
-    app.get(`/small_animals`, (req, res) => {
-        res.render(`animals`);
     });
 
     // Render 404 page for any unmatched routes
