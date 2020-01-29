@@ -7,7 +7,9 @@ body {
 .main {
   background: url('')
 }
-
+.card {
+  width: 18rem;
+}
 #image-upload {
   border: 1px solid #ccc;
   display: inline-block;
@@ -17,6 +19,7 @@ body {
 
 input[type="file"]{
   display: none;
+  margin-bottom: 1rem;
 }
 
 .nav-link:hover {
