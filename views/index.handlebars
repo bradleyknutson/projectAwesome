@@ -17,7 +17,11 @@
         <a class="nav-link" href="/animals/dog">Dogs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">{{#if user}}Sign Out{{else}}Sign In{{/if}}</a>
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">{{#if user}}Sign
+          Out{{else}}Sign In{{/if}}</a>
       </li>
     </ul>
   </div>
@@ -27,13 +31,12 @@
     <div id="header" class="containter text-white text-center">
       <h1 class="display-1">Animal Rescue</h1>
       <p>A background Image here would be nice.</p>
-      <button class="btn btn-lg btn-dark">Sign In</button>
     </div>
   </div>
 </section>
 <section id="animals" class="mb-5">
   <div class="container text-center text-white">
-    <h2>Animals Available for Adoption. Sign in for more information.</h2>
+    <h2>Find a forever pet for your forever home</h2>
     <div class="row">
       <div class="col-md-4">
         <img src="" alt="" class="img-fluid">
@@ -53,4 +56,3 @@
     </div>
   </div>
 </section>
-
