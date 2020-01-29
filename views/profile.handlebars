@@ -34,9 +34,20 @@
       <img id="profile-image" src="{{user.profileImg}}" alt="profile image">
     </div>
     <div class="add-image">
-      <label for="image"></label>
-      <input class="btn btn-dark" type="file" name="image" id="image">
-      <button class="btn btn-dark">Add Profile Image</button>
+      <label id="image-upload" for="image" class="btn btn-dark">
+        <i class="fas fa-cloud-upload-alt"></i> Select Profile Image
+        <input class="btn btn-dark" type="file" name="image" id="image">
+      </label>
+      <div><button class="btn btn-dark">Submit</button>
+      </div>
     </div>
   </div>
 </form>
+
+{{!-- <div class="card">
+  <img src="{{user.profileImg}}" id="img-preview" />
+  <label class="file-upload-container" for="file-upload">
+    <input id="file-upload" type="file" style="display:none;">
+    Select an Image
+  </label>
+</div> --}}
