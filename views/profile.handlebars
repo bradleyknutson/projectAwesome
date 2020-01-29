@@ -1,13 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="/">Animal Rescue</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navLinks">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/animals/cat">Cats</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/animals/dog">Dogs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">{{#if user}}Sign
+          Out{{else}}Sign In{{/if}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <form action="/profile/image" method="post" enctype="multipart/form-data">
-  <div>
+  {{!-- <div>
     <label for="Name">Name</label>
     <input type="text" name="name" id="name">
     <button class="btn btn-dark">Add Profile Name</button>
-  </div>
+  </div> --}}
   <div>
-    <label for="image">Profile Image</label>
-    <input type="file" name="image" id="image">
-    <button class="btn btn-dark">Add Profile Image</button>
-    <img src="{{user.profileImg}}" alt="profile image">
+    <div class="image-div mt-5 mb-5 ml-5">
+      <img id="profile-image" src="{{user.profileImg}}" alt="profile image">
+    </div>
+    <div class="add-image">
+      <label for="image"></label>
+      <input class="btn btn-dark" type="file" name="image" id="image">
+      <button class="btn btn-dark">Add Profile Image</button>
+    </div>
   </div>
 </form>

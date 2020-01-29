@@ -4,9 +4,25 @@ body {
   background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.main {
+  background: url('')
+}
+
 .nav-link:hover {
   transition: border 0.2s;
   border-bottom: 1px solid white;
+}
+
+#profile-image {
+  border-radius: 25px;
+  height: 100px;
+  width: 100px;
+}
+
+li {
+  list-style-type: none;
+  padding: 5px;
+  margin: 5px;
 }
 
 #main {
