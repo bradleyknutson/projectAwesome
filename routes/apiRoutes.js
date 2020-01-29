@@ -45,6 +45,16 @@ module.exports = function (app) {
             }
         });
     });
+
+    app.post(`/api/save-animal-search`, (req, res) => {
+        db.SavedAnimalSearch.create(req.body).then((result) => {
+            if(result.affectedRows === 0){
+                res.status(404).end();
+            }else{
+                res.status(200).end();
+            }
+        });
+    });
     
 };
 
