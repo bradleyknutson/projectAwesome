@@ -1,4 +1,4 @@
-var db = require(`../models`);
+const db = require(`../models`);
 const passport = require(`../config/passport`);
 const bodyParser = require(`body-parser`);
 const upload = require(`../config/middleware/multer`);
@@ -34,6 +34,7 @@ module.exports = function (app) {
     // add profile picture and profile name
     app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: true }));
   
+    // eslint-disable-next-line no-unused-vars
     app.post(`/profile/image`, upload.single(`image`), async (req, res) => {
         const result = await cloudinary.v2.uploader.upload(req.file.path);
         db.User.update({
