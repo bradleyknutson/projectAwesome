@@ -6,4 +6,6 @@ branches:
 cache:
   directories:
     - node_modules
+before_install:
+ - CREATE DATABASE -e animalRescue;
 
