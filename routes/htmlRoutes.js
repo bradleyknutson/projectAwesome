@@ -5,8 +5,10 @@ const isAuthenticated = require(`../config/middleware/isAuthenticated`);
 module.exports = function(app) {
     // Load index page
     app.get(`/`, (req, res, next) => {
+        const ipInfo = req.ipInfo;
         client.animal.search({
             sort: `recent`,
+            location: `${parseFloat(ipInfo.ll[0])},${parseFloat(ipInfo.ll[1])}`,
             limit: 15,
             status: `adoptable`
         }).then(response => {
@@ -22,7 +24,7 @@ module.exports = function(app) {
                     user: req.user || false
                 });
         }).catch(err => {
-            console.log(err.request, err.response);
+            console.log(err.request, err.response.data.detail);
             next(err);
         });
     });
@@ -49,12 +51,14 @@ module.exports = function(app) {
     });
 
     app.get(`/animals/:animal?`, (req, res, next) => {
+        const ipInfo = req.ipInfo;
         if(req.params.animal){
             let animalSearch = req.params.animal.toLowerCase().replace(/^\w/, c=> c.toUpperCase());
             client.animal.search(
                 {
                     type: animalSearch,
                     sort: `recent`,
+                    location: `${parseFloat(ipInfo.ll[0])},${parseFloat(ipInfo.ll[1])}`,
                     limit: 50,
                     status: `adoptable`
                 })
@@ -76,6 +80,7 @@ module.exports = function(app) {
         }else{
             client.animal.search({
                 sort: `recent`,
+                location: `${parseFloat(ipInfo.ll[0])},${parseFloat(ipInfo.ll[1])}`,
                 limit: 50,
                 status: `adoptable`
             })

@@ -4,6 +4,7 @@ const exphbs = require(`express-handlebars`);
 const passport = require(`passport`);
 const flash = require(`connect-flash`);
 const cron = require(`./cron`);
+const expressip = require(`express-ip`);
 
 var db = require(`./models`);
 
@@ -18,6 +19,7 @@ app.use(require(`express-session`)({ secret: `keyboard cat`, resave: false, save
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(expressip().getIpInfoMiddleware);
 
 //Cron
 cron.start();
