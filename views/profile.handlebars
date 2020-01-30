@@ -145,15 +145,14 @@
   </div>
 </form>
 <hr>
-
 <div class="container mb-5">
   <h1 class="text-white">Saved Searches</h1>
-  <div class="card">
-    <div class="card-body">
-      <div class="d-flex bd-highlight">
-        <div class="p-2 flex-grow-1 bd-highlight"><a href="#">Link to Saved Pet Search</a></div>
-        <div class="p-2 bd-highlight"><i class="fas fa-trash-alt" id="trash"></i></div>
-      </div>
-    </div>
+  {{!-- call it search or something else?? --}}
+  {{#each search}}
+  {{> animals/savedSearches}}
+  {{/each}}
+  <div class="p-2 flex-grow-1">
+    <i class="fas fa-plus"></i>
   </div>
+
 </div>
