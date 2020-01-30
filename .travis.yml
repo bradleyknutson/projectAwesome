@@ -1,4 +1,6 @@
 language: node_js
+services:
+  - mysql
 node_js: "8"
 branches:
   only:
@@ -7,6 +9,5 @@ cache:
   directories:
     - node_modules
 before_install:
- - DROP DATABASE IF EXISTS animalRescue;
- - CREATE DATABASE animalRescue;
+ - mysql -e 'CREATE DATABASE animalRescue;'
 
