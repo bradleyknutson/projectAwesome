@@ -1,8 +1,9 @@
 require(`dotenv`).config();
-var express = require(`express`);
-var exphbs = require(`express-handlebars`);
+const express = require(`express`);
+const exphbs = require(`express-handlebars`);
 const passport = require(`passport`);
 const flash = require(`connect-flash`);
+const cron = require(`./cron`);
 
 var db = require(`./models`);
 
@@ -18,7 +19,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
+//Cron
+cron.start();
 
 // Handlebars
 app.engine(

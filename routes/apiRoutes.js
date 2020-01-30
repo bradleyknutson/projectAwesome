@@ -1,4 +1,4 @@
-var db = require(`../models`);
+const db = require(`../models`);
 const passport = require(`../config/passport`);
 const bodyParser = require(`body-parser`);
 const upload = require(`../config/middleware/multer`);
@@ -34,6 +34,7 @@ module.exports = function (app) {
     // add profile picture and profile name
     app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: true }));
   
+    // eslint-disable-next-line no-unused-vars
     app.post(`/profile/image`, upload.single(`image`), async (req, res) => {
         const result = await cloudinary.v2.uploader.upload(req.file.path);
         db.User.update({
@@ -42,6 +43,16 @@ module.exports = function (app) {
         {
             where: {
                 email: req.user.email
+            }
+        });
+    });
+
+    app.post(`/api/save-animal-search`, (req, res) => {
+        db.SavedAnimalSearch.create(req.body).then((result) => {
+            if(result.affectedRows === 0){
+                res.status(404).end();
+            }else{
+                res.status(200).end();
             }
         });
     });
