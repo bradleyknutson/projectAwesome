@@ -21,7 +21,6 @@ const emailAnimals = new CronJob(`0 00 12 * * *`, () => {
             });
             userData.location = animalSearch.dataValues.location;
             userData.distance = animalSearch.dataValues.distance;
-            console.log(userData);
             client.animal.search({...userData,
                 sort: `recent`,
                 limit: 5,
@@ -40,12 +39,11 @@ const emailAnimals = new CronJob(`0 00 12 * * *`, () => {
                             to: result.dataValues.email,
                             from: `awesome-animal-rescue@bknutson.com`,
                             subject: `We Found Some Animals For You!`,
-                            text: `and easy to do anywhere, even with Node.js`,
+                            text: ``,
                             html: buildAnimalEmail(response.data.animals)
                         };
                         sgMail.send(msg);
                     });
-                    console.log(response.data.animals);
                 }).catch(err => {
                     console.log(err);
                     
