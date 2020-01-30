@@ -7,12 +7,18 @@ module.exports = function(app) {
     app.get(`/`, (req, res, next) => {
         client.animal.search({
             sort: `recent`,
-            limit: 3,
+            limit: 15,
             status: `adoptable`
         }).then(response => {
+            let animalArr = [];
+            response.data.animals.forEach(function(animal){
+                if(animal.photos[0] && animalArr.length !== 3){
+                    animalArr.push(animal);
+                }
+            });
             res.render(`index`, 
                 {
-                    animal: response.data.animals,
+                    animal: animalArr,
                     user: req.user || false
                 });
         }).catch(err => {
@@ -49,12 +55,18 @@ module.exports = function(app) {
                 {
                     type: animalSearch,
                     sort: `recent`,
-                    limit: 20,
+                    limit: 50,
                     status: `adoptable`
                 })
                 .then(response => {
+                    let animalArr = [];
+                    response.data.animals.forEach((animal) => {
+                        if(animal.photos[0] && animalArr.length !== 20){
+                            animalArr.push(animal);
+                        }
+                    });
                     res.render(`animalSearch`, {
-                        animal: response.data.animals,
+                        animal: animalArr,
                         user: req.user || false
                     });
                 }).catch(err => {
@@ -64,13 +76,19 @@ module.exports = function(app) {
         }else{
             client.animal.search({
                 sort: `recent`,
-                limit: 30,
+                limit: 50,
                 status: `adoptable`
             })
                 .then(response => {
+                    let animalArr = [];
+                    response.data.animals.forEach(function(animal){
+                        if(animal.photos[0] && animalArr.length !== 20){
+                            animalArr.push(animal);
+                        }
+                    });
                     res.render(`animalSearch`, 
                         {
-                            animal: response.data.animals,
+                            animal: animalArr,
                             user: req.user || false
                         });
                 }).catch(err => {
