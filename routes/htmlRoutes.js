@@ -7,7 +7,7 @@ module.exports = function(app) {
     app.get(`/`, (req, res, next) => {
         client.animal.search({
             sort: `recent`,
-            limit: 30,
+            limit: 3,
             status: `adoptable`
         }).then(response => {
             res.render(`index`, 
@@ -49,7 +49,7 @@ module.exports = function(app) {
                 {
                     type: animalSearch,
                     sort: `recent`,
-                    limit: 30,
+                    limit: 20,
                     status: `adoptable`
                 })
                 .then(response => {
