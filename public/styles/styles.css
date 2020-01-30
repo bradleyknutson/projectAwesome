@@ -7,9 +7,7 @@ body {
 .main {
   background: url('')
 }
-.card {
-  width: 18rem;
-}
+
 #image-upload {
   border: 1px solid #ccc;
   display: inline-block;
@@ -39,8 +37,17 @@ li {
   margin: 5px;
 }
 
+.trash {
+  text-align: right;
+}
+
 #main {
   min-height: 700px;
+}
+
+hr {
+  border-top: 2px solid white;
+
 }
 
 @media(max-width: 768px){

@@ -24,25 +24,8 @@
 </nav>
 
 
-{{!-- <form action="/profile/image" method="post" enctype="multipart/form-data">
-  <div class="form-row container">
-    <div class="image-div mt-5 mb-5">
-      <img id="profile-image" src="{{user.profileImg}}" alt="profile image">
-    </div>
-    <div class="add-image">
-      <label id="image-upload" for="image" class="btn btn-dark">
-        <i class="fas fa-cloud-upload-alt"></i> Select Profile Image
-        <input class="btn btn-dark" type="file" name="image" id="image">
-      </label>
-
-
-      <div><button class="btn btn-dark">Submit</button>
-      </div>
-</form> --}}
-
-
 <form action="/profile/image" method="post" enctype="multipart/form-data">
-  <div class="container mb-5">
+  <div class="container mb-5 text-white">
     <div class="image-div mt-5 mb-3">
       <img id="profile-image" src="{{user.profileImg}}" alt="profile image">
     </div>
@@ -159,3 +142,16 @@
     </div>
   </div>
 </form>
+<hr>
+
+<div class="container mb-5">
+  <h1 class="text-white">Saved Searches</h1>
+  <div class="card">
+    <div class="card-body">
+     <div class="d-flex bd-highlight">
+  <div class="p-2 flex-grow-1 bd-highlight"><a href="#">Link to Saved Pet Search</a></div>
+  <div class="p-2 bd-highlight"><i class="fas fa-trash-alt"></i></div>
+</div>
+    </div>
+  </div>
+</div>
