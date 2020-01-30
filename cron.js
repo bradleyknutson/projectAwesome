@@ -5,7 +5,7 @@ sgMail.setApiKey(process.env.SENDGRID_API);
 const petfinder = require(`@petfinder/petfinder-js`);
 const client = new petfinder.Client({apiKey: process.env.PETFINDER_API, secret: process.env.PETFINDER_SECRET});
 
-const emailAnimals = new CronJob(`0 00 12 * * *`, () => {
+const emailAnimals = new CronJob(`0 0 12 * * *`, () => {
     db.SavedAnimalSearch.findAll({
         where: {
             emailOn: true
@@ -21,15 +21,13 @@ const emailAnimals = new CronJob(`0 00 12 * * *`, () => {
             });
             userData.location = animalSearch.dataValues.location;
             userData.distance = animalSearch.dataValues.distance;
+            console.log(userData);
             client.animal.search({...userData,
                 sort: `recent`,
                 limit: 5,
                 status: `adoptable`
             })
                 .then(response => {
-
-                    // Add IF for when no animals are found, do not send email
-
                     db.User.findOne({
                         where: {
                             id: animalSearch.dataValues.UserId
@@ -39,19 +37,21 @@ const emailAnimals = new CronJob(`0 00 12 * * *`, () => {
                             to: result.dataValues.email,
                             from: `awesome-animal-rescue@bknutson.com`,
                             subject: `We Found Some Animals For You!`,
-                            text: ``,
+                            text: buildAnimalEmail(response.data.animals),
                             html: buildAnimalEmail(response.data.animals)
                         };
-                        sgMail.send(msg);
+                        if(response.data.animals[0]){
+                            sgMail.send(msg);
+                        }
+                    }).catch(err => {
+                        console.log(err);
                     });
                 }).catch(err => {
-                    console.log(err);
-                    
+                    console.log(err);               
                 });
         });
     });
     
-
 }, null, true, `America/Denver`);
 
 function hasPhoto(animalObj){
