@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="/">Animal Rescue</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navLinks">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/animals/cat">Cats</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/animals/dog">Dogs</a>
+      </li>
+
+      {{#if user}}
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      {{/if}}
+      <li class="nav-item">
+        <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">{{#if user}}Sign
+          Out{{else}}Sign In{{/if}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container text-white mb-5">
+  <form>
+    <div class="form-group">
+      <label for="name-input">Name</label>
+      <input type="text" class="form-control" required id="name-input" placeholder="Your Name">
+    </div>
+    <div class="form-group">
+      <label for="type-input">Name</label>
+      <input type="text" class="form-control" required id="type-input" placeholder="Type of Animal">
+    </div>
+    <div class="form-group">
+      <label for="breed-input">Breed</label>
+      <input type="text" class="form-control" id="breed-input" placeholder="Breed">
+    </div>
+    <div class="form-group">
+      <label for="age-input">Breed</label>
+      <input type="text" class="form-control" id="age-input" placeholder="Age">
+    </div>
+    <div class="form-group">
+      <label for="gender-select">Gender</label>
+      <select class="form-control" id="gender-select">
+        <option selected>Choose...</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="children-select">Good with Children</label>
+      <select class="form-control" id="children-select">
+        <option selected>Choose...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="dogs-select">Good with Dogs</label>
+      <select class="form-control" id="cats-select">
+        <option selected>Choose...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cats-select">Good with Cats</label>
+      <select class="form-control" id="cats-select">
+        <option selected>Choose...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="zip-input">Zip Code</label>
+      <input type="text" class="form-control" required id="zip-input" placeholder="Zip Code">
+    </div>
+    <div class="form-group">
+      <h5>Email me when new pets are available</h5>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="email-radio-yes" id="email-radio-yes" value="yes" checked>
+        <label class="form-check-label" for="email-radio-yes">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="email-radio-no" id="email-radio-no" value="no">
+        <label class="form-check-label" for="email-radio-no">
+          No
+        </label>
+      </div>
+    </div>
+    <button type="button" class="btn btn-dark btn-lg btn-block">Submit</button>
+</div>
