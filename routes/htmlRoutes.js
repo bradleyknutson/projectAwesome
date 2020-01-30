@@ -1,8 +1,8 @@
 const petfinder = require(`@petfinder/petfinder-js`);
-const client = new petfinder.Client({apiKey: process.env.PETFINDER_API, secret: process.env.PETFINDER_SECRET});
+const client = new petfinder.Client({ apiKey: process.env.PETFINDER_API, secret: process.env.PETFINDER_SECRET });
 const isAuthenticated = require(`../config/middleware/isAuthenticated`);
 
-module.exports = function(app) {
+module.exports = function (app) {
     // Load index page
     app.get(`/`, (req, res, next) => {
         const ipInfo = req.ipInfo;
@@ -13,12 +13,12 @@ module.exports = function(app) {
             status: `adoptable`
         }).then(response => {
             let animalArr = [];
-            response.data.animals.forEach(function(animal){
-                if(animal.photos[0] && animalArr.length !== 3){
+            response.data.animals.forEach(function (animal) {
+                if (animal.photos[0] && animalArr.length !== 3) {
                     animalArr.push(animal);
                 }
             });
-            res.render(`index`, 
+            res.render(`index`,
                 {
                     animal: animalArr,
                     user: req.user || false
@@ -30,15 +30,15 @@ module.exports = function(app) {
     });
 
     app.get(`/login`, (req, res) => {
-        if(req.user){
+        if (req.user) {
             res.redirect(`/`);
         }
         console.log(req.flash(`error`));
-        res.render(`login`, {error: req.flash(`error`)});
+        res.render(`login`, { error: req.flash(`error`) });
     });
 
     app.get(`/signup`, (req, res) => {
-        if(req.user){
+        if (req.user) {
             res.redirect(`/`);
         }
         res.render(`signup`);
@@ -50,10 +50,21 @@ module.exports = function(app) {
         });
     });
 
+    app.get(`/search`, (req, res) => {
+        if (!req.user) {
+            res.redirect(`/`);
+        }
+        res.render(`search`, {
+            user: req.user || false
+        });
+    });
+
     app.get(`/animals/:animal?`, (req, res, next) => {
+
         const ipInfo = req.ipInfo;
         if(req.params.animal){
             let animalSearch = req.params.animal.toLowerCase().replace(/^\w/, c=> c.toUpperCase());
+
             client.animal.search(
                 {
                     type: animalSearch,
@@ -65,7 +76,7 @@ module.exports = function(app) {
                 .then(response => {
                     let animalArr = [];
                     response.data.animals.forEach((animal) => {
-                        if(animal.photos[0] && animalArr.length !== 20){
+                        if (animal.photos[0] && animalArr.length !== 20) {
                             animalArr.push(animal);
                         }
                     });
@@ -77,7 +88,7 @@ module.exports = function(app) {
                     // res.render(`404`);
                     next(err);
                 });
-        }else{
+        } else {
             client.animal.search({
                 sort: `recent`,
                 location: `${parseFloat(ipInfo.ll[0])},${parseFloat(ipInfo.ll[1])}`,
@@ -86,12 +97,12 @@ module.exports = function(app) {
             })
                 .then(response => {
                     let animalArr = [];
-                    response.data.animals.forEach(function(animal){
-                        if(animal.photos[0] && animalArr.length !== 20){
+                    response.data.animals.forEach(function (animal) {
+                        if (animal.photos[0] && animalArr.length !== 20) {
                             animalArr.push(animal);
                         }
                     });
-                    res.render(`animalSearch`, 
+                    res.render(`animalSearch`,
                         {
                             animal: animalArr,
                             user: req.user || false
@@ -104,7 +115,7 @@ module.exports = function(app) {
     });
 
     // Render 404 page for any unmatched routes
-    app.get(`*`, function(req, res) {
+    app.get(`*`, function (req, res) {
         res.render(`404`);
     });
 };
