@@ -38,8 +38,9 @@ $(function () {
             });
         }
     });
+
     // get the search form data
-    $(`#search-form`).on(`submit`, event => {
+    $(`#animal-search-submit`).on(`click`, event => {
         event.preventDefault();
         let searchData = {
             name: $(`#name-input`).val().trim(),
@@ -47,13 +48,14 @@ $(function () {
             breed: $(`#breed-input`).val(),
             age: $(`#age-input`).val().trim(),
             gender: $(`#gender-select`).val(),
-            children: $(`#children-select`).val(),
-            dogs: $(`#dogs-select`).val(),
-            cats: $(`#cats-select`).val(),
-            zip: $(`zip-input`).val().trim(),
+            good_with_children: $(`#children-select`).val(),
+            good_with_dogs: $(`#dogs-select`).val(),
+            good_with_cats: $(`#cats-select`).val(),
+            location: $(`zip-input`).val().trim(),
         };
         // send post request & clear inputs
-        $.post(`/api/search`, searchData).then((res) => {
+        $.post(`/api/save-animal-search`, searchData).then((res) => {
+            console.log(`searchData`,searchData);
             $(`#name-input`).val(``);
             $(`#type-input`).val(``);
             $(`#breed-input`).val(``);
