@@ -36,9 +36,9 @@ a:hover {
 color: #595959;
 }
 
-#pets-container {
+/* #pets-container {
 display: flex;
-}
+} */
 
 .nav-link{
   font-family: 'Lato', sans-serif;
