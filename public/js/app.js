@@ -48,27 +48,35 @@ $(function () {
             breed: $(`#breed-input`).val(),
             age: $(`#age-input`).val().trim(),
             gender: $(`#gender-select`).val(),
+            // eslint-disable-next-line camelcase
             good_with_children: $(`#children-select`).val(),
+            // eslint-disable-next-line camelcase
             good_with_dogs: $(`#dogs-select`).val(),
+            // eslint-disable-next-line camelcase
             good_with_cats: $(`#cats-select`).val(),
-            location: $(`zip-input`).val().trim(),
+            location: $(`#zip-input`).val().trim(),
         };
         // send post request & clear inputs
-        $.post(`/api/save-animal-search`, searchData).then((res) => {
-            console.log(`searchData`,searchData);
-            $(`#name-input`).val(``);
-            $(`#type-input`).val(``);
-            $(`#breed-input`).val(``);
-            $(`#age-input`).val(``);
-            $(`#gender-select`).val(``);
-            $(`#children-select`).val(``);
-            $(`#dogs-select`).val(``);
-            $(`#cats-select`).val(``);
-            $(`#zip-input`).val(``);
-            window.location.replace(res);
+        $.ajax({
+            type: `POST`,
+            url: `/api/save-animal-search`,
+            data: searchData,
+            success: function (response) {
+                $(`#name-input`).val(``);
+                $(`#type-input`).val(``);
+                $(`#breed-input`).val(``);
+                $(`#age-input`).val(``);
+                $(`#gender-select`).val(``);
+                $(`#children-select`).val(``);
+                $(`#dogs-select`).val(``);
+                $(`#cats-select`).val(``);
+                $(`#zip-input`).val(``);
+                location.reload();
+            }
         }).catch(err => {
             console.log(`search form error`, err.resJSON);
         });
+
 
     });
 
