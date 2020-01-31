@@ -48,7 +48,7 @@ module.exports = function (app) {
     });
 
     app.post(`/api/save-animal-search`, (req, res) => {
-        db.SavedAnimalSearch.create(req.body).then((result) => {
+        db.SavedAnimalSearch.create({...req.body, UserId: req.user.id}).then((result) => {
             if(result.affectedRows === 0){
                 res.status(404).end();
             }else{
@@ -56,9 +56,19 @@ module.exports = function (app) {
             }
         });
     });
-    
-   
 
-
+    app.put(`/api/user-update`, (req, res) => {
+        db.User.update({...req.body}, {
+            where: {
+                email: req.user.email
+            }
+        }).then(result => {
+            if(result.changedRows === 0){
+                res.status(404).end();
+            }else{
+                res.json(`/profile`);
+            }
+        });
+    });
 };
 

@@ -43,41 +43,87 @@ $(function () {
     $(`#animal-search-submit`).on(`click`, event => {
         event.preventDefault();
         let searchData = {
-            name: $(`#name-input`).val().trim(),
-            type: $(`#type-input`).val().trim(),
-            breed: $(`#breed-input`).val(),
-            age: $(`#age-input`).val().trim(),
-            gender: $(`#gender-select`).val(),
+            name: isAnswered($(`#name-input`).val().trim()) || false,
+            type: isAnswered($(`#type-input`).val().trim()) || false,
+            breed: isAnswered($(`#breed-input`).val()) || null,
+            age: isAnswered($(`#age-input`).val().trim()) || null,
+            gender: isAnswered($(`#gender-select`).val()) || null,
             // eslint-disable-next-line camelcase
-            good_with_children: $(`#children-select`).val(),
+            good_with_children: isAnswered($(`#children-select`).val()) || null,
             // eslint-disable-next-line camelcase
-            good_with_dogs: $(`#dogs-select`).val(),
+            good_with_dogs: isAnswered($(`#dogs-select`).val()) || null,
             // eslint-disable-next-line camelcase
-            good_with_cats: $(`#cats-select`).val(),
-            location: $(`#zip-input`).val().trim(),
+            good_with_cats: isAnswered($(`#cats-select`).val()) || null,
+            location: isAnswered($(`#zip-input`).val().trim()) || false,
         };
+
+        if(Object.values(searchData).includes(false)){
+            console.log(`missing info`);
+        }else{
+            $.ajax({
+                type: `POST`,
+                url: `/api/save-animal-search`,
+                data: searchData,
+                success: function () {
+                    $(`#name-input`).val(``);
+                    $(`#type-input`).val(``);
+                    $(`#breed-input`).val(``);
+                    $(`#age-input`).val(``);
+                    $(`#gender-select`).val(``);
+                    $(`#children-select`).val(``);
+                    $(`#dogs-select`).val(``);
+                    $(`#cats-select`).val(``);
+                    $(`#zip-input`).val(``);
+                    location.reload();
+                }
+            }).catch(err => {
+                console.log(`search form error`, err.resJSON);
+            });
+        }
         // send post request & clear inputs
-        $.ajax({
-            type: `POST`,
-            url: `/api/save-animal-search`,
-            data: searchData,
-            success: function () {
-                $(`#name-input`).val(``);
-                $(`#type-input`).val(``);
-                $(`#breed-input`).val(``);
-                $(`#age-input`).val(``);
-                $(`#gender-select`).val(``);
-                $(`#children-select`).val(``);
-                $(`#dogs-select`).val(``);
-                $(`#cats-select`).val(``);
-                $(`#zip-input`).val(``);
-                location.reload();
-            }
-        }).catch(err => {
-            console.log(`search form error`, err.resJSON);
-        });
 
-
+    });
+    $(`#userInfoSubmit`).on(`click`, e => {
+        e.preventDefault();
+        let userInfoObj = {
+            firstName: isAnswered($(`#first-name`).val().trim()) || null,
+            lastName: isAnswered($(`#last-name`).val().trim()) || null,
+            email: isAnswered($(`#email`).val().trim()) || false,
+            mainAddress: isAnswered($(`#address`).val().trim()) || null,
+            secondAddress: isAnswered($(`#address2`).val().trim()) || null,
+            city: isAnswered($(`#city`).val().trim()) || null,
+            state: isAnswered($(`#state`).val().trim()) || null,
+            zipcode: isAnswered($(`#zip`).val().trim()) || null,
+        };
+        if(Object.values(userInfoObj).includes(false)){
+            console.log(`Needs more info`);
+        }else{
+            $.ajax({
+                type: `PUT`,
+                url: `/api/user-update`,
+                data: userInfoObj,
+                success: function (res) {
+                    $(`#first-name`).val(``);
+                    $(`#last-name`).val(``);
+                    $(`#email`).val(``);
+                    $(`#address`).val(``);
+                    $(`#address2`).val(``);
+                    $(`#city`).val(``);
+                    $(`#state`).val(``);
+                    $(`#zip`).val(``);
+                    window.location.replace(res);
+                }
+            });
+        }
+    
     });
 
 });
+
+function isAnswered(answer){
+    if(answer && answer !== `` && answer !== `Choose...`){
+        return answer;
+    }else{
+        return false;
+    }
+}
