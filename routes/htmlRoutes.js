@@ -33,7 +33,6 @@ module.exports = function (app) {
         if (req.user) {
             res.redirect(`/`);
         }
-        console.log(req.flash(`error`));
         res.render(`login`, { error: req.flash(`error`) });
     });
 
@@ -50,10 +49,7 @@ module.exports = function (app) {
         });
     });
 
-    app.get(`/search`, (req, res) => {
-        if (!req.user) {
-            res.redirect(`/`);
-        }
+    app.get(`/search`, isAuthenticated, (req, res) => {
         res.render(`search`, {
             user: req.user || false
         });
