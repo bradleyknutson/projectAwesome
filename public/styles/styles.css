@@ -1,7 +1,8 @@
 body {
-  background: #00B4DB;
-  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
-  background: linear-gradient(to right, #0083B0, #00B4DB); 
+  background: #603813; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #603813, #b29f94); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #603813, #b29f94); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   color: #ffffff
@@ -14,6 +15,26 @@ body {
   /* max-width: 100%; */
   /* height: auto; */
 } 
+
+img {
+ width: 100px;
+ height: 100px;
+ background-size: cover;
+}
+
+a {
+  color: #ffffff;
+}
+
+/* .border-box {
+  border: 3px solid #00B0F0;
+  height: 200px;
+  width: 200px;
+} */
+
+a:hover {
+color: #595959;
+}
 
 #pets-container {
 display: flex;
