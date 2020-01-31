@@ -32,21 +32,21 @@
 </nav>
 
 <div class="container text-white mb-5">
-  <form>
+  <form id="search-form">
     <div class="form-group">
       <label for="name-input">Name</label>
-      <input type="text" class="form-control" required id="name-input" placeholder="Your Name">
+      <input type="text" class="form-control" required id="name-input" placeholder="required">
     </div>
     <div class="form-group">
-      <label for="type-input">Name</label>
-      <input type="text" class="form-control" required id="type-input" placeholder="Type of Animal">
+      <label for="type-input">Animal Type</label>
+      <input type="text" class="form-control" required id="type-input" placeholder="required">
     </div>
     <div class="form-group">
       <label for="breed-input">Breed</label>
       <input type="text" class="form-control" id="breed-input" placeholder="Breed">
     </div>
     <div class="form-group">
-      <label for="age-input">Breed</label>
+      <label for="age-input">Age</label>
       <input type="text" class="form-control" id="age-input" placeholder="Age">
     </div>
     <div class="form-group">
@@ -67,7 +67,7 @@
     </div>
     <div class="form-group">
       <label for="dogs-select">Good with Dogs</label>
-      <select class="form-control" id="cats-select">
+      <select class="form-control" id="dogs-select">
         <option selected>Choose...</option>
         <option>Yes</option>
         <option>No</option>
@@ -100,5 +100,5 @@
         </label>
       </div>
     </div>
-    <button type="button" class="btn btn-dark btn-lg btn-block">Submit</button>
+    <button type="submit" class="btn btn-dark btn-lg btn-block">Submit</button>
 </div>
