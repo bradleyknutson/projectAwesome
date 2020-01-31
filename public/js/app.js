@@ -61,7 +61,7 @@ $(function () {
             type: `POST`,
             url: `/api/save-animal-search`,
             data: searchData,
-            success: function (response) {
+            success: function () {
                 $(`#name-input`).val(``);
                 $(`#type-input`).val(``);
                 $(`#breed-input`).val(``);
