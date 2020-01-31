@@ -44,6 +44,15 @@ module.exports = function (app) {
             where: {
                 email: req.user.email
             }
+        }).then(() => {
+            req.session.passport.user.profileImg = result.secure_url;
+            let user = req.user;
+            req.login(user, function(err) {
+                if(err){
+                    console.log(err);
+                }
+            });
+            res.redirect(`/profile`);
         });
     });
 
