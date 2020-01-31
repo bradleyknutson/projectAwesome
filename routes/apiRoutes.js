@@ -35,7 +35,7 @@ module.exports = function (app) {
     app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: true }));
   
     // eslint-disable-next-line no-unused-vars
-    app.post(`/profile/image`, upload.single(`image`), async (req, res) => {
+    app.post(`/profile/image`, upload.single(`image`), async (req, res, next) => {
         const result = await cloudinary.v2.uploader.upload(req.file.path);
         db.User.update({
             profileImg: result.secure_url
@@ -44,6 +44,16 @@ module.exports = function (app) {
             where: {
                 email: req.user.email
             }
+        }).then(() => {
+            req.session.passport.user.profileImg = result.secure_url;
+            var user = {...req.session.passport.user};
+            req.login(user, function(error) {
+                if(error){next(error);}
+            });
+            res.end();
+            res.redirect(`/profile`);
+        }).catch(err => {
+            next(err);
         });
     });
 

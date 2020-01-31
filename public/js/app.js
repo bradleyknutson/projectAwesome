@@ -39,5 +39,20 @@ $(function () {
         }
     });
 
+    // $(`#photoSubmit`).on(`click`, function(e) {
+    //     e.preventDefault();
+    //     let formData = new FormData($(`form#imgForm`));
+    //     $.ajax({
+    //         type: `POST`,
+    //         url: `/profile/image`,
+    //         data: formData,
+    //         enctype: `multipart/form-data`,
+    //         processData: false,
+    //         success: function () {
+    //             location.reload(true);
+    //         }
+    //     });        
+    // });
+
     
 });

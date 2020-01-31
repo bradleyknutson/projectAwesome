@@ -4,10 +4,11 @@ module.exports = multer({
  
     storage: multer.diskStorage({}),
     fileFilter: (req, file, cb) => {
-        if(!file.mimetype.match(/jpe|jpeg|png$i/)){
+        if(!file.mimetype.match(/jpe|jpeg|png/)){
             cb(new Error(`File is not supported`), false);
             return; 
         }
         cb(null, true);
     }
 });
+
