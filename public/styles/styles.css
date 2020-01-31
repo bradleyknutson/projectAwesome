@@ -1,16 +1,42 @@
 body {
-  background: #2b5876;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #00B4DB;
+  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
+  background: linear-gradient(to right, #0083B0, #00B4DB); 
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #ffffff
 }
 
-.main {
-  background: url('')
+ #main {
+  background: url('../media/paws-logo.png') top center / cover no-repeat;
+  min-height: 750px;
+  /* background-size: auto; */
+  /* max-width: 100%; */
+  /* height: auto; */
+} 
+
+#pets-container {
+display: flex;
+}
+
+.nav-link{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
+
+.nav-link:hover {
+  transition: border 0.2s;
+  border-bottom: 1px solid #5D392D;
+}
+
+.navbar-brand {
+/* font-family: 'Love Ya Like A Sister', cursive; */
+font-family: 'Finger Paint', cursive;
+font-weight: 700;
 }
 
 #image-upload {
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
@@ -21,9 +47,12 @@ input[type="file"]{
   margin-bottom: 1rem;
 }
 
-.nav-link:hover {
-  transition: border 0.2s;
-  border-bottom: 1px solid white;
+.card-header {
+  color: #5D392D;
+}
+
+.card-footer {
+  color: #5D392D;
 }
 
 #trash:hover {
@@ -47,17 +76,13 @@ li {
   text-align: right;
 }
 
-#main {
-  min-height: 700px;
-}
-
 hr {
-  border-top: 2px solid white;
+  border-top: 2px solid #5D392D;
 
 }
 
 @media(max-width: 768px){
   .navbar {
-    background: #1f1f1f;
+    background: #595959;
   }
 }
