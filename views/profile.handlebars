@@ -16,8 +16,10 @@
         <a class="nav-link" href="/animals/dog">Dogs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">{{#if user}}Sign
-          Out{{else}}Sign In{{/if}}</a>
+        <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">
+        {{#if user}}Sign Out
+        {{else}}Sign In
+        {{/if}}</a>
       </li>
     </ul>
   </div>
@@ -36,8 +38,12 @@
         <i class="fas fa-cloud-upload-alt"></i> Select Profile Image
         <input class="btn btn-dark" type="file" name="image" id="image">
       </label>
+      <button class="btn btn-dark" name="userPhotoSubmit">Update</button>
     </div>
-
+  </div>
+</form>
+<form>
+  <div class="container mb-5 text-white">
     <div class="form-row mt-4">
       <div class="form-group col-md-6">
         <label for="first-name">First Name</label>
@@ -132,7 +138,7 @@
         <input type="text" class="form-control" id="zip">
       </div>
     </div>
-    <div><button class="btn btn-dark">Submit</button>
+    <div><button class="btn btn-dark" name="userInfoSubmit">Submit</button>
     </div>
   </div>
 </form>
@@ -140,7 +146,7 @@
 <div class="container mb-5">
   <h1 class="text-white">Saved Searches</h1>
   {{#each search}}
-  {{> animals/savedSearches}}
+    {{> animals/savedSearches}}
   {{/each}}
   <div class="p-2 flex-grow-1">
     <a href="/search"><i class="fas fa-plus btn btn-dark"> New Search</i></a>
