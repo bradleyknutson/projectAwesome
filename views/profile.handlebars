@@ -17,7 +17,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">
-        {{#if user}}Sign Out{{else}}Sign In{{/if}}</a>
+        {{#if user}}Sign Out
+        {{else}}Sign In
+        {{/if}}</a>
       </li>
     </ul>
   </div>
@@ -36,12 +38,12 @@
         <i class="fas fa-cloud-upload-alt"></i> Select Profile Image
         <input class="btn btn-dark" type="file" name="image" id="image">
       </label>
-      <button class="btn btn-dark" name="userInfoSubmit">Submit</button>
+      <button class="btn btn-dark" name="userPhotoSubmit">Update</button>
     </div>
   </div>
 </form>
-    <form>
-      <div class="container mb-5 text-white">
+<form>
+  <div class="container mb-5 text-white">
     <div class="form-row mt-4">
       <div class="form-group col-md-6">
         <label for="first-name">First Name</label>
@@ -136,29 +138,17 @@
         <input type="text" class="form-control" id="zip">
       </div>
     </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-email" type="checkbox" id="email-check">
-        <label class="form-check-emal" for="email-check">
-          I'd like to receive emails about pets available for adoption in my area.
-        </label>
-      </div>
+    <div><button class="btn btn-dark" name="userInfoSubmit">Submit</button>
     </div>
-    <div>
-      <button class="btn btn-dark" name="userInfoSubmit">Submit</button>
-    </div>
-  </div>
   </div>
 </form>
 <hr>
 <div class="container mb-5">
   <h1 class="text-white">Saved Searches</h1>
-  {{!-- call it search or something else?? --}}
   {{#each search}}
     {{> animals/savedSearches}}
   {{/each}}
   <div class="p-2 flex-grow-1">
-    <i class="fas fa-plus"></i>
+    <a href="/search"><i class="fas fa-plus btn btn-dark"> New Search</i></a>
   </div>
-
 </div>
