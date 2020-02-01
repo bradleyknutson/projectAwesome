@@ -12,11 +12,57 @@ module.exports = function(sequelize, DataTypes) {
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                len: [8]
+            }
         },
         profileImg: {
             type: DataTypes.STRING,
             isUrl: true
+        },
+        firstName: {
+            type: DataTypes.STRING,
+            validate: {
+                len: [1]
+            }
+        },
+        lastName: {
+            type: DataTypes.STRING,
+            validate: {
+                len: [1]
+            }
+        },
+        mainAddress: {
+            type: DataTypes.TEXT,
+            validate: {
+                len: [1]
+            }
+        },
+        secondAddress: {
+            type: DataTypes.TEXT,
+            validate: {
+                len: [1]
+            }
+        },
+        city: {
+            type: DataTypes.STRING,
+            validate: {
+                len: [1]
+            }
+        },
+        state: {
+            type: DataTypes.STRING,
+            validate: {
+                len: [1]
+            }
+        },
+        zipcode: {
+            type: DataTypes.STRING,
+            validate: {
+                // eslint-disable-next-line quotes
+                is: ["^[0-9]{5}(?:-[0-9]{4})?$",'i']
+            }
         }
     });
 

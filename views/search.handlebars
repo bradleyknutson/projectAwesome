@@ -35,7 +35,7 @@
   <form id="search-form">
     <div class="form-group">
       <label for="name-input">Name</label>
-      <input type="text" class="form-control" required id="name-input" placeholder="required">
+      <input type="text" class="form-control" required id="name-input" value="{{search.dataValues.name}}" placeholder="required">
     </div>
     <div class="form-group">
       <label for="type-input">Animal Type</label>
@@ -52,33 +52,33 @@
     <div class="form-group">
       <label for="gender-select">Gender</label>
       <select class="form-control" id="gender-select">
-        <option selected>Choose...</option>
-        <option>Male</option>
-        <option>Female</option>
+        <option selected value="">Choose...</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
       </select>
     </div>
     <div class="form-group">
       <label for="children-select">Good with Children</label>
       <select class="form-control" id="children-select">
-        <option selected>Choose...</option>
-        <option>Yes</option>
-        <option>No</option>
+        <option selected disabled value="">Choose...</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
       </select>
     </div>
     <div class="form-group">
       <label for="dogs-select">Good with Dogs</label>
       <select class="form-control" id="dogs-select">
-        <option selected>Choose...</option>
-        <option>Yes</option>
-        <option>No</option>
+        <option selected disabled value="">Choose...</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
       </select>
     </div>
     <div class="form-group">
       <label for="cats-select">Good with Cats</label>
       <select class="form-control" id="cats-select">
-        <option selected>Choose...</option>
-        <option>Yes</option>
-        <option>No</option>
+        <option selected disabled value="">Choose...</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
       </select>
     </div>
     <div class="form-group">

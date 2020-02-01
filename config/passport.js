@@ -32,8 +32,8 @@ passport.serializeUser(function(user, cb) {
     cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
-    cb(null, obj);
+passport.deserializeUser(function(user, cb) {
+    cb(null, user);
 });
 
 module.exports = passport;
