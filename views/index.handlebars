@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="/">Animal Rescue</a>
+<nav class="navbar navbar-expand-lg navbar-dark top-nav">
+  <a class="navbar-brand" id="nav-brand" href="/">P.A.W.S.</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -30,21 +30,21 @@
     </ul>
   </div>
 </nav>
-<section id="main" class="d-flex justify-content-center align-items-center">
-  <div>
-    <div id="header" class="containter text-white text-center">
-      <h1 class="display-1">Animal Rescue</h1>
-      <p>A background Image here would be nice.</p>
-    </div>
-  </div>
-</section>
-<section id="animals" class="mb-5">
-  <div class="container text-center text-white">
-    <h2>Find a forever pet for your forever home</h2>
-    <div class="row">
+
+<section id="main" class="d-flex justify-content-center align-items-center"></section>
+
+<section id="animals" class="mt-5 mb-5">
+  <div class="container text-center">
+    <h2>Pet Adoption Web Services</h2>
+    <div class="row mt-5">
       {{#each animal}}
       {{> animals/homeAnimal}}
       {{/each}}
     </div>
   </div>
 </section>
+<br>
+
+<div class="footer">
+  footer
+</div>

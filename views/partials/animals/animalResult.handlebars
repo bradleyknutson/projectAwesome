@@ -1,6 +1,8 @@
-<div class="col-md-4">
-  <img src="{{photos.0.full}}" alt="pet" class="img-fluid">
+<div class="container col-md-4 pet-container mb-5">
+  <img src="{{photos.0.full}}" alt="pet" class="img-size">
   <h3>{{name}}</h3>
   <p>{{description}}</p>
-  <a href="{{url}}">Click Here for More Information</a>
+  <button class="btn btn-primary mb-2">
+    <a href="{{url}}"><i class="fas fa-paw"></i> More Information</a>
+  </button>
 </div>

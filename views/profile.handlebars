@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="/">Animal Rescue</a>
+  <a class="navbar-brand" href="/">P.A.W.S.</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,9 +17,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">
-        {{#if user}}Sign Out
-        {{else}}Sign In
-        {{/if}}</a>
+          {{#if user}}Sign Out
+          {{else}}Sign In
+          {{/if}}</a>
       </li>
     </ul>
   </div>
@@ -34,11 +34,11 @@
       </div>
     </div>
     <div class="add-image">
-      <label id="image-upload" for="image" class="btn btn-dark">
-        <i class="fas fa-cloud-upload-alt"></i> Select Profile Image
-        <input class="btn btn-dark" type="file" name="image" id="image">
+      <label id="image-upload" for="image" class="btn btn-primary btn-sm">
+        <i class="fas fa-cloud-upload-alt"></i> Select Image
+        <input class="btn btn-primary" type="file" name="image" id="image">
       </label>
-      <button class="btn btn-dark" name="userPhotoSubmit">Update</button>
+      <button class="btn btn-primary" name="userPhotoSubmit">Update</button>
     </div>
   </div>
 </form>
@@ -136,17 +136,17 @@
         <input type="text" class="form-control" id="zip" value="{{user.zipcode}}">
       </div>
     </div>
-    <div><button class="btn btn-dark" id="userInfoSubmit">Submit</button>
+    <div><button class="btn btn-primary" id="userInfoSubmit">Submit</button>
     </div>
   </div>
 </form>
 <hr>
-<div class="container mb-5">
-  <h1 class="text-white">Saved Searches</h1>
+<div class="container mb-5 animated slideInLeft">
+  <h1>Saved Searches</h1>
   {{#each search}}
-    {{> animals/savedSearches}}
+  {{> animals/savedSearches}}
   {{/each}}
   <div class="p-2 flex-grow-1">
-    <a href="/search"><i class="fas fa-plus btn btn-dark"> New Search</i></a>
+    <a href="/search"><i class="fas fa-paw btn btn-primary"> New Search</i></a>
   </div>
 </div>
