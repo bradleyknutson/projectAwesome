@@ -8,6 +8,31 @@ body {
   color: #ffffff
 }
 
+.navbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.nav-link{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
+
+.nav-link:hover {
+  transition: border 0.2s;
+  border-bottom: 1px solid #ffffff;
+}
+
+.navbar-brand {
+/* font-family: 'Love Ya Like A Sister', cursive; */
+font-family: 'Finger Paint', cursive;
+font-weight: 700;
+}
+
+
  #main {
   background: url('../media/cats.jpeg')top center / cover no-repeat;
   min-height: 750px;
@@ -55,45 +80,18 @@ a:hover {
   margin-top: 150px;
 }
 
-.container {
-  z-index: 1;
-}
-
 .pet-container {
   margin-top: 100px;
   border-style: solid;
   border-color: #ffffff;
   background-color: #7a8ab1;
+  z-index: 1;
 }
 
 .home-pets {
   border-style: solid;
   border-color: #ffffff;
   background-color: #7a8ab1;
-}
-
-.nav-bar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 2;
-}
-
-.nav-link{
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-}
-
-.nav-link:hover {
-  transition: border 0.2s;
-  border-bottom: 1px solid #ffffff;
-}
-
-.navbar-brand {
-/* font-family: 'Love Ya Like A Sister', cursive; */
-font-family: 'Finger Paint', cursive;
-font-weight: 700;
 }
 
 #image-upload {
@@ -158,5 +156,15 @@ hr {
   .navbar {
     background: #606c88;
   }
+
+  .nav-link:hover {
+    border-bottom: none;
+  }
+
+  #main {
+    min-height: 500px;
+  }
+
 }
+
 
