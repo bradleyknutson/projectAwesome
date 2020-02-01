@@ -37,11 +37,12 @@ font-weight: 700;
   min-height: 750px;
 } 
 
+/* home page images */
 .img-size {
  margin-top: 10px;
  padding: 10px;
- width: 300px;
- height: 300px;
+ width: 100%;
+ height: auto;
  border-radius: 25px;
  background-size: cover;
 }
@@ -79,6 +80,7 @@ a:hover {
   margin-top: 120px;
 }
 
+/* profile picture image holder */
 .img-container {
   width: 125px;
   height: 125px;
@@ -89,10 +91,9 @@ a:hover {
   overflow: hidden;
 }
 
-.login-card {
-  margin-top: 150px;
-}
 
+
+/* image container for pet search pages */
 .pet-container {
   margin-top: 100px;
   border-style: solid;
@@ -102,6 +103,7 @@ a:hover {
   z-index: 1;
 }
 
+/* image holder for home page */
 .home-pets {
   border-style: solid;
   border-color: #ffffff;
@@ -113,6 +115,10 @@ a:hover {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
+}
+
+.login-card {
+  margin-top: 150px;
 }
 
 input[type="file"]{
@@ -136,6 +142,7 @@ input[type="file"]{
   color: #3f4c6b;
 }
 
+/* profile image */
 #profile-image {
   border-radius: 25px;
   height: 100px;
