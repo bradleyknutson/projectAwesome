@@ -173,6 +173,36 @@ hr {
   margin-top: -50px;
 }
 
+
+/* 
+a:hover {
+  color: #e600e6;
+}
+
+.fa-github {
+  font-size: 2rem;
+}
+
+.name,
+.fa-github,
+.copy, .navbar {
+  color: rgb(227,227,227);
+}
+
+nav {
+  background: rgb(51, 173, 255);
+} */
+
+/* .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+} */
+
 @media(max-width: 768px){
   .navbar {
     background: #606c88;
