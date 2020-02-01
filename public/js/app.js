@@ -119,6 +119,17 @@ $(function () {
     
     });
 
+    $(`.searchDelete`).on(`click`, function(e) {
+        e.preventDefault();
+        let id = $(this).data(`id`);
+        $.ajax({
+            type: `DELETE`,
+            url: `/api/delete-animal-search/${id}`,
+        }).then(res => {
+            window.location.replace(res);
+        });
+    });
+
 });
 
 function isAnswered(answer){

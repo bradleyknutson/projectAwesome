@@ -1,8 +1,8 @@
   <div class="card">
     <div class="card-body">
       <div class="d-flex bd-highlight">
-        <div class="p-2 flex-grow-1 bd-highlight"><a href="#">{{dataValues.name}}</a></div>
-        <div class="p-2 bd-highlight"><i class="fas fa-trash-alt" id="trash"></i></div>
+        <div class="p-2 flex-grow-1 bd-highlight"><a href="/search/id/{{dataValues.id}}">{{dataValues.name}}</a></div>
+        <div class="p-2 bd-highlight"><button class="searchDelete" data-id="{{dataValues.id}}"><i class="fas fa-trash-alt"></i></button></div>
       </div>
     </div>
   </div>

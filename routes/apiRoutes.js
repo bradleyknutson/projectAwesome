@@ -70,6 +70,20 @@ module.exports = function (app) {
         });
     });
 
+    app.delete(`/api/delete-animal-search/:id`, (req, res) => {
+        db.SavedAnimalSearch.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(result => {
+            if(result.affectedRows === 0){
+                res.status(404).end();
+            }else{
+                res.json(`/profile`);
+            }
+        });
+    });
+
     app.put(`/api/user-update`, (req, res) => {
         db.User.update({...req.body}, {
             where: {
@@ -85,7 +99,7 @@ module.exports = function (app) {
                 req.session.passport.user.secondAddress = req.body.secondAddress;
                 req.session.passport.user.city = req.body.city;
                 req.session.passport.user.state = req.body.state;
-                req.session.passport.user.zip = req.body.zipcode;
+                req.session.passport.user.zipcode = req.body.zipcode;
                 let user = req.user;
                 req.login(user, function(err) {
                     if(err){

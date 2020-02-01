@@ -63,6 +63,19 @@ module.exports = function (app) {
         });
     });
 
+    app.get(`/search/id/:id`, isAuthenticated, (req, res) => {
+        db.SavedAnimalSearch.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(result => {
+            res.render(`search`, {
+                user: req.user || false,
+                search: result
+            });
+        });
+    });
+
     app.get(`/animals/:animal?`, (req, res, next) => {
 
         const ipInfo = req.ipInfo;
