@@ -78,7 +78,7 @@
       <div class="form-group col-md-4">
         <label for="state">State</label>
         <select id="state" class="form-control">
-          <option selected value="">{{user.state}}</option>
+          <option selected value="{{user.state}}">{{#if user.state}}{{user.state}}{{else}}Choose...{{/if}}</option>
           <option>AK</option>
           <option>AL</option>
           <option>AR</option>

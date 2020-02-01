@@ -42,7 +42,7 @@ $(function () {
     // get the search form data
     $(`#animal-search-submit`).on(`click`, event => {
         event.preventDefault();
-        let searchData = {
+        var searchData = {
             name: isAnswered($(`#name-input`).val().trim()) || false,
             type: isAnswered($(`#type-input`).val().trim()) || false,
             breed: isAnswered($(`#breed-input`).val()) || null,
@@ -60,11 +60,12 @@ $(function () {
         if(Object.values(searchData).includes(false)){
             console.log(`missing info`);
         }else{
+            console.log(searchData);
             $.ajax({
                 type: `POST`,
                 url: `/api/save-animal-search`,
                 data: searchData,
-                success: function () {
+                success: function (res) {
                     $(`#name-input`).val(``);
                     $(`#type-input`).val(``);
                     $(`#breed-input`).val(``);
@@ -74,10 +75,10 @@ $(function () {
                     $(`#dogs-select`).val(``);
                     $(`#cats-select`).val(``);
                     $(`#zip-input`).val(``);
-                    location.reload();
+                    window.location.replace(res);
                 }
             }).catch(err => {
-                console.log(`search form error`, err.resJSON);
+                console.log(`search form error`, err);
             });
         }
         // send post request & clear inputs
@@ -121,7 +122,8 @@ $(function () {
 });
 
 function isAnswered(answer){
-    if(answer && answer !== `` && answer !== `Choose...`){
+    // eslint-disable-next-line quotes
+    if(answer && answer !== "" && answer !== `Choose...`){
         return answer;
     }else{
         return false;

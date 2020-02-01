@@ -57,11 +57,15 @@ module.exports = function (app) {
     });
 
     app.post(`/api/save-animal-search`, (req, res) => {
-        db.SavedAnimalSearch.create({...req.body, UserId: req.user.id}).then((result) => {
+        db.SavedAnimalSearch.create(
+            {
+                ...req.body,
+                UserId: req.user.id
+            }).then((result) => {
             if(result.affectedRows === 0){
                 res.status(404).end();
             }else{
-                res.status(200).end();
+                res.json(`/profile`);
             }
         });
     });
@@ -75,6 +79,19 @@ module.exports = function (app) {
             if(result.changedRows === 0){
                 res.status(404).end();
             }else{
+                req.session.passport.user.firstName = req.body.firstName;
+                req.session.passport.user.lastName = req.body.lastName;
+                req.session.passport.user.mainAddress = req.body.mainAddress;
+                req.session.passport.user.secondAddress = req.body.secondAddress;
+                req.session.passport.user.city = req.body.city;
+                req.session.passport.user.state = req.body.state;
+                req.session.passport.user.zip = req.body.zipcode;
+                let user = req.user;
+                req.login(user, function(err) {
+                    if(err){
+                        console.log(err);
+                    }
+                });
                 res.json(`/profile`);
             }
         });
