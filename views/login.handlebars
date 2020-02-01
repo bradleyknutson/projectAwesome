@@ -1,36 +1,37 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="/">P.A.W.S.</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-	  <div class="collapse navbar-collapse" id="navLinks">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/animals/cat">Cats</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/animals/dog">Dogs</a>
-      </li>
-		 {{#if user}}
-      <li class="nav-item">
-        <a class="nav-link" href="/profile">Profile</a>
-      </li>
-      {{/if}}
-      <li class="nav-item">
-        <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">{{#if user}}Sign Out{{else}}Sign In{{/if}}</a>
-      </li>
-    </ul>
-  </div>
+	<a class="navbar-brand" href="/">P.A.W.S.</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navLinks">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/animals/cat">Cats</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/animals/dog">Dogs</a>
+			</li>
+			{{#if user}}
+			<li class="nav-item">
+				<a class="nav-link" href="/profile">Profile</a>
+			</li>
+			{{/if}}
+			<li class="nav-item">
+				<a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">{{#if user}}Sign
+					Out{{else}}Sign In{{/if}}</a>
+			</li>
+		</ul>
+	</div>
 </nav>
 
 
-<div class="container">
+<div class="container login-card">
 	<div class="d-flex justify-content-center h-100">
-		<div class="card">
+		<div class="card animated flipInX">
 			<div class="card-header">
 				<h3>Sign In</h3>
 			</div>
@@ -41,23 +42,24 @@
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 						<input type="text" class="form-control" placeholder="email" name="email" autocomplete="email">
-						
+
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="password" name="password" autocomplete="current-password">
+						<input type="password" class="form-control" placeholder="password" name="password"
+							autocomplete="current-password">
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn float-right login_btn" name="loginSubmit">Login</button>
+						<button type="submit" class="btn float-right login_btn login-signup" name="loginSubmit">Login</button>
 						{{#if error}}{{error}}{{/if}}
 					</div>
 				</form>
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="/signup">Sign Up</a>
+					Don't have an account?<a class="login-signup" href="/signup">Sign Up</a>
 				</div>
 			</div>
 		</div>

@@ -1,24 +1,24 @@
 body {
-  background: #603813; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #603813, #b29f94); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #603813, #b29f94); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: #606c88;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   color: #ffffff
 }
 
  #main {
-  background: url('../media/paws-logo.png') top center / cover no-repeat;
+  background: url('../media/cats.jpeg')top center / cover no-repeat;
   min-height: 750px;
-  /* background-size: auto; */
-  /* max-width: 100%; */
-  /* height: auto; */
 } 
 
-img {
- width: 100px;
- height: 100px;
+.img-size {
+ margin-top: 10px;
+ padding: 10px;
+ width: 300px;
+ height: 300px;
+ border-radius: 25px;
  background-size: cover;
 }
 
@@ -26,19 +26,59 @@ a {
   color: #ffffff;
 }
 
-/* .border-box {
-  border: 3px solid #00B0F0;
-  height: 200px;
-  width: 200px;
-} */
-
 a:hover {
-color: #595959;
+  color: #EDF3FF;
+  text-decoration: none;
 }
 
-/* #pets-container {
-display: flex;
-} */
+.btn-primary,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #00b0f0;
+    border-color: #00b0f0;
+}
+.btn-primary:active,
+.btn-primary:hover {
+  background-color: #0083b0;
+  border-color: #0083B0
+}
+
+.update-photo-btn {
+  border-radius: 100%;
+}
+
+.form-container {
+  margin-top: 100px;
+}
+
+.login-card {
+  margin-top: 150px;
+}
+
+.container {
+  z-index: 1;
+}
+
+.pet-container {
+  margin-top: 100px;
+  border-style: solid;
+  border-color: #ffffff;
+  background-color: #7a8ab1;
+}
+
+.home-pets {
+  border-style: solid;
+  border-color: #ffffff;
+  background-color: #7a8ab1;
+}
+
+.nav-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
 
 .nav-link{
   font-family: 'Lato', sans-serif;
@@ -47,7 +87,7 @@ display: flex;
 
 .nav-link:hover {
   transition: border 0.2s;
-  border-bottom: 1px solid #5D392D;
+  border-bottom: 1px solid #ffffff;
 }
 
 .navbar-brand {
@@ -69,11 +109,19 @@ input[type="file"]{
 }
 
 .card-header {
-  color: #5D392D;
+  color: #606c88;
 }
 
 .card-footer {
-  color: #5D392D;
+  color: #606c88;
+}
+
+.login-signup {
+  color: #606c88
+}
+
+.login-signup:hover {
+  color: #3f4c6b;
 }
 
 #trash:hover {
@@ -98,12 +146,17 @@ li {
 }
 
 hr {
-  border-top: 2px solid #5D392D;
+  border-top: 2px solid #ffffff;
+}
 
+.footer {
+  height: 50px;
+  margin-top: -50px;
 }
 
 @media(max-width: 768px){
   .navbar {
-    background: #595959;
+    background: #606c88;
   }
 }
+

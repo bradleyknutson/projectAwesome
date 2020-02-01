@@ -17,138 +17,141 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" id="login_out" href="{{#if user}}/logout{{else}}/login{{/if}}">
-        {{#if user}}Sign Out
-        {{else}}Sign In
-        {{/if}}</a>
+          {{#if user}}Sign Out
+          {{else}}Sign In
+          {{/if}}</a>
       </li>
     </ul>
   </div>
 </nav>
 
+<div class="container form-container animated slideInRight">
+  <form action="/profile/image" method="post" enctype="multipart/form-data">
+    <div class="container mb-5">
+      <div class="image-div mt-5 mb-3">
+        <div class="img-container">
+          <img id="profile-image" src="{{user.profileImg}}" alt="">
+        </div>
+      </div>
+      <div class="add-image">
+        <label id="image-upload" for="image" class="btn btn-primary btn-sm">
+          Select Image
+          <input class="btn btn-primary" type="file" name="image" id="image">
+        </label>
+        <br>
+        <button class="btn btn-primary btn-sm" name="userPhotoSubmit"><i class="fas fa-cloud-upload-alt"></i>
+          Upload</button>
+      </div>
+    </div>
+  </form>
+  <form>
+    <div class="container mb-5">
+      <div class="form-row mt-4">
+        <div class="form-group col-md-6">
+          <label for="first-name">First Name</label>
+          <input type="text" class="form-control" id="first-name" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="last-name">Last Name</label>
+          <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+        </div>
+      </div>
 
-<form action="/profile/image" method="post" enctype="multipart/form-data">
-  <div class="container mb-5">
-    <div class="image-div mt-5 mb-3">
-      <div class="img-container">
-        <img id="profile-image" src="{{user.profileImg}}" alt="">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Email">
       </div>
-    </div>
-    <div class="add-image">
-      <label id="image-upload" for="image" class="btn btn-dark">
-        <i class="fas fa-cloud-upload-alt"></i> Select Profile Image
-        <input class="btn btn-dark" type="file" name="image" id="image">
-      </label>
-      <button class="btn btn-dark" name="userPhotoSubmit">Update</button>
-    </div>
-  </div>
-</form>
-<form>
-  <div class="container mb-5 text-white">
-    <div class="form-row mt-4">
-      <div class="form-group col-md-6">
-        <label for="first-name">First Name</label>
-        <input type="text" class="form-control" id="first-name" placeholder="First Name">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password">
       </div>
-      <div class="form-group col-md-6">
-        <label for="last-name">Last Name</label>
-        <input type="text" class="form-control" id="last-name" placeholder="Last Name">
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="Email">
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password">
-    </div>
-
-    <div class="form-group">
-      <label for="address">Address</label>
-      <input type="text" class="form-control" id="address" placeholder="1234 Main St">
-    </div>
-    <div class="form-group">
-      <label for="address2">Address 2</label>
-      <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor">
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="city">City</label>
-        <input type="text" class="form-control" id="city">
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" placeholder="1234 Main St">
       </div>
-      <div class="form-group col-md-4">
-        <label for="state">State</label>
-        <select id="state" class="form-control">
-          <option selected>Choose...</option>
-          <option>AK</option>
-          <option>AL</option>
-          <option>AR</option>
-          <option>AZ</option>
-          <option>CA</option>
-          <option>CO</option>
-          <option>CT</option>
-          <option>DE</option>
-          <option>FL</option>
-          <option>GA</option>
-          <option>HI</option>
-          <option>IA</option>
-          <option>ID</option>
-          <option>IL</option>
-          <option>IN</option>
-          <option>KS</option>
-          <option>KY</option>
-          <option>LA</option>
-          <option>MA</option>
-          <option>MD</option>
-          <option>ME</option>
-          <option>MI</option>
-          <option>MN</option>
-          <option>MO</option>
-          <option>MS</option>
-          <option>MT</option>
-          <option>NC</option>
-          <option>ND</option>
-          <option>NE</option>
-          <option>NH</option>
-          <option>NJ</option>
-          <option>NM</option>
-          <option>NV</option>
-          <option>NY</option>
-          <option>OH</option>
-          <option>OK</option>
-          <option>OR</option>
-          <option>PA</option>
-          <option>RI</option>
-          <option>SC</option>
-          <option>SD</option>
-          <option>TN</option>
-          <option>TX</option>
-          <option>UT</option>
-          <option>VA</option>
-          <option>VT</option>
-          <option>WA</option>
-          <option>WI</option>
-          <option>WV</option>
-          <option>WY</option>
-        </select>
+      <div class="form-group">
+        <label for="address2">Address 2</label>
+        <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor">
       </div>
-      <div class="form-group col-md-2">
-        <label for="zip">Zip</label>
-        <input type="text" class="form-control" id="zip">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="state">State</label>
+          <select id="state" class="form-control">
+            <option selected>Choose...</option>
+            <option>AK</option>
+            <option>AL</option>
+            <option>AR</option>
+            <option>AZ</option>
+            <option>CA</option>
+            <option>CO</option>
+            <option>CT</option>
+            <option>DE</option>
+            <option>FL</option>
+            <option>GA</option>
+            <option>HI</option>
+            <option>IA</option>
+            <option>ID</option>
+            <option>IL</option>
+            <option>IN</option>
+            <option>KS</option>
+            <option>KY</option>
+            <option>LA</option>
+            <option>MA</option>
+            <option>MD</option>
+            <option>ME</option>
+            <option>MI</option>
+            <option>MN</option>
+            <option>MO</option>
+            <option>MS</option>
+            <option>MT</option>
+            <option>NC</option>
+            <option>ND</option>
+            <option>NE</option>
+            <option>NH</option>
+            <option>NJ</option>
+            <option>NM</option>
+            <option>NV</option>
+            <option>NY</option>
+            <option>OH</option>
+            <option>OK</option>
+            <option>OR</option>
+            <option>PA</option>
+            <option>RI</option>
+            <option>SC</option>
+            <option>SD</option>
+            <option>TN</option>
+            <option>TX</option>
+            <option>UT</option>
+            <option>VA</option>
+            <option>VT</option>
+            <option>WA</option>
+            <option>WI</option>
+            <option>WV</option>
+            <option>WY</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="zip">Zip</label>
+          <input type="text" class="form-control" id="zip">
+        </div>
+      </div>
+      <div><button class="btn btn-primary" name="userInfoSubmit">Submit</button>
       </div>
     </div>
-    <div><button class="btn btn-dark" name="userInfoSubmit">Submit</button>
-    </div>
-  </div>
-</form>
+  </form>
+</div>
 <hr>
-<div class="container mb-5">
+<div class="container mb-5 animated slideInLeft">
   <h1>Saved Searches</h1>
   {{#each search}}
-    {{> animals/savedSearches}}
+  {{> animals/savedSearches}}
   {{/each}}
   <div class="p-2 flex-grow-1">
-    <a href="/search"><i class="fas fa-plus btn btn-dark"> New Search</i></a>
+    <a href="/search"><i class="fas fa-paw btn btn-primary"> New Search</i></a>
   </div>
 </div>
