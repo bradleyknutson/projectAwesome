@@ -22,15 +22,15 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         good_with_children: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: true
         },
         good_with_dogs: {
-            type:DataTypes.BOOLEAN,
+            type:DataTypes.STRING,
             allowNull: true
         },
         good_with_cats: {
-            type:DataTypes.BOOLEAN,
+            type:DataTypes.STRING,
             allowNull: true
         },
         location: {
