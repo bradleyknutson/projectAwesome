@@ -27,7 +27,6 @@ body {
 }
 
 .navbar-brand {
-/* font-family: 'Love Ya Like A Sister', cursive; */
 font-family: 'Finger Paint', cursive;
 font-weight: 700;
 }
@@ -45,6 +44,14 @@ font-weight: 700;
  height: 300px;
  border-radius: 25px;
  background-size: cover;
+}
+
+.search-link {
+  color: #606c88;
+}
+
+.search-link:hover {
+ color:  #0083B0;
 }
 
 a {
@@ -65,15 +72,21 @@ a:hover {
 .btn-primary:active,
 .btn-primary:hover {
   background-color: #0083b0;
-  border-color: #0083B0
-}
-
-.update-photo-btn {
-  border-radius: 100%;
+  border-color: #0083B0;
 }
 
 .form-container {
-  margin-top: 100px;
+  margin-top: 120px;
+}
+
+.img-container {
+  width: 125px;
+  height: 125px;
+  border-style: solid;
+  border-color: #ffffff;
+  background-color: #7a8ab1;
+  padding: 10px;
+  overflow: hidden;
 }
 
 .login-card {
@@ -85,6 +98,7 @@ a:hover {
   border-style: solid;
   border-color: #ffffff;
   background-color: #7a8ab1;
+  overflow: hidden;
   z-index: 1;
 }
 
@@ -122,10 +136,6 @@ input[type="file"]{
   color: #3f4c6b;
 }
 
-#trash:hover {
-  color: red;
-}
-
 #profile-image {
   border-radius: 25px;
   height: 100px;
@@ -139,8 +149,12 @@ li {
   margin: 5px;
 }
 
-.trash {
+.trash-btn {
   text-align: right;
+}
+
+.trash-btn:hover {
+  color: red;
 }
 
 hr {
