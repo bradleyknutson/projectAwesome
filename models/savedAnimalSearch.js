@@ -35,7 +35,10 @@ module.exports = function(sequelize, DataTypes) {
         },
         location: {
             type: DataTypes.STRING,
-            allowNull: false
+            validate: {
+                // eslint-disable-next-line quotes
+                is: ["^[0-9]{5}(?:-[0-9]{4})?$",'i']
+            }
         },
         distance: {
             type: DataTypes.INTEGER,
