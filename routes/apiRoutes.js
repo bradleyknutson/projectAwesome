@@ -70,6 +70,21 @@ module.exports = function (app) {
         });
     });
 
+    app.put(`/api/update-animal-search/:id`, (req, res) => {
+        console.log(req.params.id);
+        db.SavedAnimalSearch.update({...req.body},{
+            where: {
+                id: req.params.id
+            }
+        }).then(result => {
+            if(result.affectedRows === 0){
+                res.status(404).end();
+            }else{
+                res.json(`/profile`);
+            }
+        });
+    });
+
     app.delete(`/api/delete-animal-search/:id`, (req, res) => {
         db.SavedAnimalSearch.destroy({
             where: {

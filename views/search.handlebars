@@ -35,33 +35,49 @@
   <form id="search-form">
     <div class="form-group">
       <label for="name-input">Name</label>
-      <input type="text" class="form-control" required id="name-input" value="{{search.dataValues.name}}"
-        placeholder="required">
+      <input type="text" class="form-control" required id="name-input" value="{{search.dataValues.name}}" placeholder="Required">
     </div>
     <div class="form-group">
       <label for="type-input">Animal Type</label>
-      <input type="text" class="form-control" required id="type-input" placeholder="required">
+      <select type="text" class="form-control" required id="type-input" placeholder="required">
+        <option selected value="{{search.dataValues.type}}">{{#if search}}{{search.dataValues.type}}{{else}}Choose...{{/if}}</option>
+        <option value="Dog">Dogs</option>
+        <option value="Cat">Cats</option>
+        <option value="Rabbit">Rabbits</option>
+        <option value="Horse">Horses</option>
+        <option value="Bird">Birds</option>
+        <option value="Barnyard">Barnyard</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="breed-input">Breed</label>
-      <input type="text" class="form-control" id="breed-input" placeholder="Breed">
+      <select type="text" class="form-control" id="breed-input"  placeholder="Breed">
+        <option selected value="{{search.dataValues.breed}}">{{#if search}}{{search.dataValues.breed}}{{else}}Choose...{{/if}}</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="age-input">Age</label>
-      <input type="text" class="form-control" id="age-input" placeholder="Age">
+      <select type="text" class="form-control" id="age-input"  placeholder="Age">
+        <option value="{{search.dataValues.age}}">{{#if search}}{{search.dataValues.age}}{{else}}Choose...{{/if}}</option>
+        <option value="baby">Baby</option>
+        <option value="young">Young</option>
+        <option value="adult">Adult</option>
+        <option value="senion">Senior</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="gender-select">Gender</label>
       <select class="form-control" id="gender-select">
-        <option selected value="">Choose...</option>
+        <option selected value="{{search.dataValues.gender}}">{{#if search}}{{search.dataValues.gender}}{{else}}Choose...{{/if}}</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
+        <option value="male,female">Either</option>
       </select>
     </div>
     <div class="form-group">
       <label for="children-select">Good with Children</label>
       <select class="form-control" id="children-select">
-        <option selected disabled value="">Choose...</option>
+        <option selected value="{{search.dataValues.good_with_children}}">{{#if search}}{{search.dataValues.good_with_children}}{{else}}Choose...{{/if}}</option>
         <option value="1">Yes</option>
         <option value="0">No</option>
       </select>
@@ -69,7 +85,7 @@
     <div class="form-group">
       <label for="dogs-select">Good with Dogs</label>
       <select class="form-control" id="dogs-select">
-        <option selected disabled value="">Choose...</option>
+        <option selected value="{{search.dataValue_good_with_dogs}}">{{#if search}}{{search.dataValues.good_with_dogs}}{{else}}Choose...{{/if}}</option>
         <option value="1">Yes</option>
         <option value="0">No</option>
       </select>
@@ -77,31 +93,33 @@
     <div class="form-group">
       <label for="cats-select">Good with Cats</label>
       <select class="form-control" id="cats-select">
-        <option selected disabled value="">Choose...</option>
+        <option selected value="{{search.dataValue_good_with_cats}}">{{#if search}}{{search.dataValues.good_with_cats}}{{else}}Choose...{{/if}}</option>
         <option value="1">Yes</option>
         <option value="0">No</option>
       </select>
     </div>
     <div class="form-group">
       <label for="zip-input">Zip Code</label>
-      <input type="text" class="form-control" required id="zip-input" placeholder="Zip Code">
+      <input type="text" class="form-control" required id="zip-input" value="{{search.dataValues.location}}" placeholder="Required">
     </div>
     <div class="form-group">
       <h5>Email me when new pets are available</h5>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="email-radio-yes" id="email-radio-yes" value="yes" checked>
+        <div class="form-check">
+        <input class="form-check-input email-radio" type="radio" name="email-radio" id="email-radio-yes" value="1" checked>
         <label class="form-check-label" for="email-radio-yes">
           Yes
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="email-radio-no" id="email-radio-no" value="no">
+        <input class="form-check-input email-radio" type="radio" name="email-radio" id="email-radio-no" value="0" {{#if search}}{{#unless search.dataValues.emailOn}}checked{{/unless}}{{/if}}>
         <label class="form-check-label" for="email-radio-no">
           No
         </label>
       </div>
     </div>
-    <button type="submit" id="animal-search-submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+    {{#if search}}<button type="submit" id="animal-search-update" data-userid={{search.dataValues.id}} class="btn btn-primary btn-lg btn-block">Update</button>
+      {{else}}<button type="submit" id="animal-search-submit"  class="btn btn-primary btn-lg btn-block">Submit</button>
+    {{/if}}
   </form>
 </div>
 <!-- Footer -->
