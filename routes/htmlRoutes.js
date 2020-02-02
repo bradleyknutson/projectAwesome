@@ -10,7 +10,7 @@ module.exports = function (app) {
         client.animal.search({
             sort: `recent`,
             location: `${parseFloat(ipInfo.ll[0])},${parseFloat(ipInfo.ll[1])}`,
-            limit: 15,
+            limit: 50,
             status: `adoptable`
         }).then(response => {
             let animalArr = [];
@@ -87,7 +87,7 @@ module.exports = function (app) {
                     type: animalSearch,
                     sort: `recent`,
                     location: `${parseFloat(ipInfo.ll[0])},${parseFloat(ipInfo.ll[1])}`,
-                    limit: 50,
+                    limit: 125,
                     status: `adoptable`
                 })
                 .then(response => {
@@ -109,7 +109,7 @@ module.exports = function (app) {
             client.animal.search({
                 sort: `recent`,
                 location: `${parseFloat(ipInfo.ll[0])},${parseFloat(ipInfo.ll[1])}`,
-                limit: 50,
+                limit: 125,
                 status: `adoptable`
             })
                 .then(response => {
