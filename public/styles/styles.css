@@ -126,6 +126,11 @@ input[type="file"]{
   margin-bottom: 1rem;
 }
 
+.search-container {
+  border: 15px solid #7a8ab1;
+  
+}
+
 .card-header {
   color: #606c88;
 }

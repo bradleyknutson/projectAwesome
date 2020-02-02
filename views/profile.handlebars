@@ -35,11 +35,12 @@
       </div>
       <div class="add-image">
         <label id="image-upload" for="image" class="btn btn-primary btn-sm">
-         Select Image
+          Select Image
           <input class="btn btn-primary btn-sm" type="file" name="image" id="image">
         </label>
         <br>
-        <button class="btn btn-primary btn-sm" name="userPhotoSubmit"> <i class="fas fa-cloud-upload-alt"></i> Update</button>
+        <button class="btn btn-primary btn-sm" name="userPhotoSubmit"> <i class="fas fa-cloud-upload-alt"></i>
+          Update</button>
       </div>
     </div>
   </form>
@@ -145,9 +146,11 @@
 <hr>
 <div class="container mb-5 animated slideInLeft">
   <h1>Saved Searches</h1>
+  <hr>
   {{#each search}}
   {{> animals/savedSearches}}
   {{/each}}
+  <hr>
   <div class="p-2 flex-grow-1">
     <a href="/search"><i class="fas fa-paw btn btn-primary"> New Search</i></a>
   </div>
