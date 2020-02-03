@@ -37,13 +37,28 @@ A web app designed to help rehome adoptable animals in your area. This app is co
 
 ![carousel](public/media/carousel.gif)
 
-### Login/Sign Up 
+### Login
 * User can access their profile page after signing in.
-* New users can create their account by providing their email and a password 8 characters in length.
 
 ![signin](public/media/signIn.png)
+
+### Sign Up
+* New users can create their account by providing their email and a password 8 characters in length.
+
 ![signup](public/media/signup.png)
 
+### Profile Image
+* Users can customize their user profile by adding a profile image.
+![profileImg](public/media/profileImg.gif)
+
+### User Information
+* Users profile information is saved to the profile page after it is submitted. 
+![userInfo](public/media/userProfile.gif)
+
+### Saved Animal Searches
+* Users can saved a search for a specific animal type. The user will be emailed when animals matching the search are available
+
+![savedSearch](public/media/savedSearches.gif)
 
 ## Contributors
 * [Bradley Knutson](https://github.com/bradleyknutson)
