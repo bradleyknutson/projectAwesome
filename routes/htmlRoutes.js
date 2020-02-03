@@ -93,7 +93,7 @@ module.exports = function (app) {
                 .then(response => {
                     let animalArr = [];
                     response.data.animals.forEach((animal) => {
-                        if (animal.photos[0] && animalArr.length !== 20) {
+                        if (animal.photos[0] && animalArr.length !== 21) {
                             animalArr.push(animal);
                         }
                     });
@@ -115,7 +115,7 @@ module.exports = function (app) {
                 .then(response => {
                     let animalArr = [];
                     response.data.animals.forEach(function (animal) {
-                        if (animal.photos[0] && animalArr.length !== 20) {
+                        if (animal.photos[0] && animalArr.length !== 21) {
                             animalArr.push(animal);
                         }
                     });
